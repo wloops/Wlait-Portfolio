@@ -30,7 +30,7 @@ export default function Navbar() {
         
         <div className="flex items-center gap-4 border-l border-current/20 pl-6 md:pl-4">
           <ThemeToggle />
-          <Link href="https://github.com/wlait" target="_blank" rel="noopener noreferrer" className="text-current hover:opacity-60 transition-opacity w-8 h-8 flex items-center justify-center rounded-md hover:bg-current/10" aria-label="GitHub">
+          <Link href="https://github.com/wloops" target="_blank" rel="noopener noreferrer" className="text-current hover:opacity-60 transition-opacity w-8 h-8 flex items-center justify-center rounded-md hover:bg-current/10" aria-label="GitHub">
             <Github className="w-4 h-4" />
           </Link>
           <Link href="mailto:hello@wlait.com" className="text-current hover:opacity-60 transition-opacity w-8 h-8 flex items-center justify-center rounded-md hover:bg-current/10" aria-label="Email">
