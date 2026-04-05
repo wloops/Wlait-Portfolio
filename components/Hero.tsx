@@ -6,9 +6,9 @@ import { useState, useEffect } from 'react';
 
 const phrases = [
   "AI Applications.",
-  "Full-Stack.",
+  "Intelligent Systems.",
   "Digital Elegance.",
-  "Web Architecture."
+  "Robust Architecture."
 ];
 
 function Typewriter() {
@@ -54,10 +54,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-8"
+          className="mb-8 flex items-center gap-4"
         >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground opacity-40"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-foreground"></span>
+          </span>
           <p className="font-mono text-xs md:text-sm tracking-[0.2em] uppercase text-muted">
-            刘文龙 / Wlait
+            刘文龙 Wlait <span className="mx-2 opacity-50">/</span> AI & Full-Stack Developer
           </p>
         </motion.div>
         
@@ -87,23 +91,28 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-12 border-t border-border pt-8 relative z-10"
+        className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-border pt-8 relative z-10"
       >
-        <p className="max-w-md text-foreground/80 text-base md:text-lg leading-relaxed text-balance font-sans">
-          7 年全栈研发经验，具备从产品界面到后端服务、再到 AI 应用集成的完整交付能力。专注于中后台、低代码、性能优化与工程化架构落地。
-        </p>
+        <div className="md:col-span-2 flex flex-col gap-4">
+          <span className="font-mono text-xs uppercase tracking-widest text-muted">Introduction</span>
+          <p className="max-w-xl text-foreground/80 text-base md:text-lg leading-relaxed text-balance font-sans">
+            7 年全栈研发经验，具备从产品界面到后端服务、再到 AI 应用集成的完整交付能力。专注于中后台、低代码、性能优化与工程化架构落地。
+          </p>
+        </div>
         
-        <div className="flex items-center gap-4 group cursor-pointer">
-          <span className="font-mono text-xs uppercase tracking-widest text-muted group-hover:text-foreground transition-colors">
-            向下滚动
-          </span>
-          <motion.div 
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-foreground transition-colors"
-          >
-            <ArrowDown className="w-4 h-4 text-foreground" />
-          </motion.div>
+        <div className="md:col-span-1 flex items-start md:justify-end">
+          <div className="flex items-center gap-4 group cursor-pointer">
+            <span className="font-mono text-xs uppercase tracking-widest text-muted group-hover:text-foreground transition-colors">
+              向下滚动
+            </span>
+            <motion.div 
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-foreground transition-colors"
+            >
+              <ArrowDown className="w-4 h-4 text-foreground" />
+            </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>
