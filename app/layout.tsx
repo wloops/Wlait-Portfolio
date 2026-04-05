@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import { Playfair_Display, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css'; // Global styles
 import Plum from '@/components/Plum';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -25,10 +26,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable} scroll-smooth scroll-pt-24`}>
+    <html lang="en" className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable} scroll-smooth scroll-pt-24`} suppressHydrationWarning>
       <body className="font-sans bg-background text-foreground antialiased" suppressHydrationWarning>
-        <Plum />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Plum />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

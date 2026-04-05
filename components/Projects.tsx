@@ -35,10 +35,10 @@ export default function Projects() {
             >
               <Link 
                 href={`/projects/${project.id}`} 
-                className="group flex flex-col md:flex-row items-start md:items-center justify-between py-12 border-b border-border hover:bg-black/[0.02] transition-colors duration-500 -mx-6 px-6 md:-mx-12 md:px-12 relative overflow-hidden"
+                className="group flex flex-col md:flex-row items-start md:items-center justify-between py-12 border-b border-border hover:bg-foreground/[0.02] transition-colors duration-500 -mx-6 px-6 md:-mx-12 md:px-12 relative overflow-hidden"
               >
                 {/* Hover Background Reveal */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/[0.01] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/[0.01] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
                 
                 <div className="flex items-start gap-8 md:gap-16 md:w-1/2 mb-6 md:mb-0 relative z-10">
                   <span className="font-mono text-xs text-muted pt-2 group-hover:text-foreground transition-colors duration-300">{project.id}</span>

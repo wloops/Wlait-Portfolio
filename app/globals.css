@@ -1,22 +1,42 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   
-  --color-background: #ffffff;
-  --color-foreground: #333333;
-  --color-muted: #888888;
-  --color-border: #eaeaea;
-  --color-accent: #000000;
+  --color-background: var(--bg-color);
+  --color-foreground: var(--fg-color);
+  --color-muted: var(--muted-color);
+  --color-border: var(--border-color);
+  --color-accent: var(--accent-color);
 }
 
 @layer base {
+  :root {
+    --bg-color: #ffffff;
+    --fg-color: #333333;
+    --muted-color: #888888;
+    --border-color: #eaeaea;
+    --accent-color: #000000;
+    --dot-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .dark {
+    --bg-color: #121212;
+    --fg-color: #e0e0e0;
+    --muted-color: #a0a0a0;
+    --border-color: #333333;
+    --accent-color: #ffffff;
+    --dot-color: rgba(255, 255, 255, 0.1);
+  }
+
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--bg-color);
+    color: var(--fg-color);
   }
 }
 
@@ -28,7 +48,7 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
   }
   .bg-dot-grid {
-    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 }

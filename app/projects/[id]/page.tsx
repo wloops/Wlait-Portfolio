@@ -24,8 +24,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
       <div className="fixed inset-0 bg-dot-grid pointer-events-none z-50" />
       
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-40 flex items-center px-6 py-6 md:px-12 mix-blend-multiply bg-background/80 backdrop-blur-md border-b border-border/50">
-        <Link href="/#projects" className="group flex items-center gap-3 font-mono text-xs uppercase tracking-widest hover:text-muted transition-colors">
+      <nav className="fixed top-0 left-0 right-0 z-40 flex items-center px-6 py-6 md:px-12 bg-background/80 backdrop-blur-md border-b border-border/50 text-foreground">
+        <Link href="/#projects" className="group flex items-center gap-3 font-mono text-xs uppercase tracking-widest hover:opacity-60 transition-opacity">
           <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover:border-foreground transition-colors">
             <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
           </div>
@@ -66,7 +66,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
             className="flex flex-wrap gap-3 mb-12"
           >
             {project.tags.map(tag => (
-              <span key={tag} className="text-xs font-mono text-foreground/80 bg-black/[0.03] border border-black/[0.05] px-3 py-1.5 rounded-md uppercase tracking-wider">
+              <span key={tag} className="text-xs font-mono text-foreground/80 bg-foreground/[0.03] border border-foreground/[0.05] px-3 py-1.5 rounded-md uppercase tracking-wider">
                 {tag}
               </span>
             ))}
@@ -101,7 +101,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full aspect-[16/9] md:aspect-[21/9] mb-32 overflow-hidden rounded-xl bg-black/5 border border-border/50 shadow-sm"
+          className="relative w-full aspect-[16/9] md:aspect-[21/9] mb-32 overflow-hidden rounded-xl bg-foreground/5 border border-border/50 shadow-sm"
         >
           <Image 
             src={project.image} 
@@ -185,7 +185,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
             <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted mb-8 border-b border-border pb-4">
               Architecture Design
             </h2>
-            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden bg-black/5 border border-border/50 shadow-sm group">
+            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden bg-foreground/5 border border-border/50 shadow-sm group">
               <Image 
                 src={project.architectureImage} 
                 alt={`${project.title} Architecture`}
