@@ -17,7 +17,10 @@ export const projects = [
       '引入混合检索（Hybrid Search）：结合 BM25 关键词检索与 pgvector 向量检索，并通过 Reranker 模型进行重排，大幅提升 Top-K 召回质量。',
       '基于 FastAPI 实现全链路异步流式接口（SSE），前端使用 Vercel AI SDK 消费流数据，实现丝滑的对话体验。'
     ],
-    image: 'https://picsum.photos/seed/ai-rag/1920/1080?blur=4'
+    image: 'https://picsum.photos/seed/ai-rag/1920/1080?blur=4',
+    demoUrl: 'https://example.com/demo',
+    githubUrl: 'https://github.com/wlait/ai-rag-platform',
+    architectureImage: 'https://picsum.photos/seed/architecture/1920/1080?blur=2'
   },
   {
     id: '02',
@@ -37,7 +40,8 @@ export const projects = [
       '引入 Node.js BFF（Backend for Frontend）层，使用 GraphQL/REST 聚合底层微服务接口，为前端提供裁剪后的聚合数据，大幅降低前端复杂度。',
       '在低代码引擎中内置表达式沙箱，支持业务人员通过简单的 JavaScript 表达式配置表单联动逻辑。'
     ],
-    image: 'https://picsum.photos/seed/supply-chain/1920/1080?blur=4'
+    image: 'https://picsum.photos/seed/supply-chain/1920/1080?blur=4',
+    architectureImage: 'https://picsum.photos/seed/arch2/1920/1080?blur=2'
   },
   {
     id: '03',

@@ -1,7 +1,7 @@
 import { projects } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
 import Image from 'next/image';
 
 export async function generateStaticParams() {
@@ -53,6 +53,24 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
               </span>
             ))}
           </div>
+
+          {/* Action Links */}
+          {('demoUrl' in project || 'githubUrl' in project) && (
+            <div className="flex flex-wrap gap-4 mb-12">
+              {'demoUrl' in project && project.demoUrl && (
+                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-mono border border-foreground bg-foreground text-background px-6 py-3 rounded-full hover:bg-transparent hover:text-foreground transition-colors">
+                  <span>Live Demo</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              )}
+              {'githubUrl' in project && project.githubUrl && (
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-mono border border-border px-6 py-3 rounded-full hover:border-foreground transition-colors">
+                  <Github className="w-4 h-4" />
+                  <span>Source Code</span>
+                </a>
+              )}
+            </div>
+          )}
         </header>
 
         {/* Hero Image */}
@@ -110,6 +128,24 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
             </div>
           </div>
         </div>
+
+        {/* Architecture Image */}
+        {'architectureImage' in project && project.architectureImage && (
+          <div className="mt-24 lg:mt-32">
+            <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted mb-8 border-b border-border pb-4">
+              Architecture Design
+            </h2>
+            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-lg overflow-hidden bg-black/5 border border-border/50">
+              <Image 
+                src={project.architectureImage} 
+                alt={`${project.title} Architecture`}
+                fill
+                className="object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </div>
+        )}
       </article>
     </main>
   );
