@@ -3,30 +3,7 @@
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-
-const projects = [
-  {
-    id: '01',
-    title: 'AI 知识库问答平台',
-    description: '面向企业知识管理场景，搭建支持文档上传解析、文本清洗、切片、向量索引构建、语义检索、引用溯源的完整 RAG 链路。',
-    tags: ['FastAPI', 'Next.js', 'PostgreSQL', 'pgvector', 'RAG'],
-    link: '#',
-  },
-  {
-    id: '02',
-    title: 'HOBY 全流程供应链平台',
-    description: '面向政府及企业的大型 B2B 供应链服务平台。从 0 到 1 设计 React 配置端 + Vue 3 渲染端的双引擎低代码体系，大幅提升交付效率。',
-    tags: ['React', 'Vue3', 'Node.js BFF', 'Java', '低代码'],
-    link: '#',
-  },
-  {
-    id: '03',
-    title: '密码安全态势感知大屏',
-    description: '面向政企安全运营的监控中枢。设计拖拽编排 + JSON Schema 驱动的可视化页面配置引擎，并解决海量实时数据场景下的性能瓶颈。',
-    tags: ['Vue3', 'ECharts', 'WebSocket', '大屏优化'],
-    link: '#',
-  },
-];
+import { projects } from '@/lib/data';
 
 export default function Projects() {
   return (
@@ -51,7 +28,7 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <Link 
-                href={project.link} 
+                href={`/projects/${project.id}`} 
                 className="group flex flex-col md:flex-row items-start md:items-center justify-between py-12 border-b border-border hover:bg-black/[0.02] transition-colors -mx-6 px-6 md:-mx-12 md:px-12"
               >
                 <div className="flex items-start gap-8 md:gap-16 md:w-1/2 mb-6 md:mb-0">
