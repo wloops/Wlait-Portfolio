@@ -20,7 +20,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
 
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background pb-32">
-      <div className="fixed inset-0 bg-noise pointer-events-none mix-blend-multiply z-50" />
+      <div className="fixed inset-0 bg-dot-grid pointer-events-none z-50" />
       
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 flex items-center px-6 py-6 md:px-12 mix-blend-multiply bg-background/80 backdrop-blur-md border-b border-border/50">

@@ -12,42 +12,32 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section className="py-32 px-6 md:px-12 bg-foreground text-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-          <div className="lg:col-span-1">
-            <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-background/60 sticky top-32">
-              Capabilities
-            </h2>
-          </div>
-          
-          <div className="lg:col-span-3">
-            <div className="flex flex-col border-t border-background/20">
-              {skills.map((skillGroup, index) => (
-                <motion.div 
-                  key={skillGroup.category}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col md:flex-row items-start md:items-center py-12 border-b border-background/20 gap-8"
-                >
-                  <h3 className="font-display text-3xl md:text-4xl md:w-1/3">
-                    {skillGroup.category}
-                  </h3>
-                  <div className="md:w-2/3 flex flex-wrap gap-x-8 gap-y-4">
-                    {skillGroup.items.map((item) => (
-                      <span key={item} className="text-background/80 font-sans text-lg">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+    <section className="px-6 py-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <h2 className="text-2xl font-bold mb-8">Skills</h2>
+        
+        <div className="flex flex-col gap-6">
+          {skills.map((skillGroup) => (
+            <div key={skillGroup.category} className="flex flex-col sm:flex-row gap-2 sm:gap-8">
+              <div className="sm:w-32 shrink-0 font-medium text-foreground">
+                {skillGroup.category}
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {skillGroup.items.map((item) => (
+                  <span key={item} className="text-sm text-muted-foreground bg-black/5 px-2 py-1 rounded">
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

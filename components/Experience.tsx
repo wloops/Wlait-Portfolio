@@ -25,44 +25,32 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-32 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-          <div className="lg:col-span-1">
-            <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted sticky top-32">
-              Experience
-            </h2>
-          </div>
-          
-          <div className="lg:col-span-3 flex flex-col border-t border-border">
-            {experiences.map((exp, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="group border-b border-border py-12 flex flex-col md:flex-row gap-8 md:gap-16 hover:bg-black/[0.02] transition-colors -mx-6 px-6 md:-mx-12 md:px-12"
-              >
-                <div className="md:w-1/3 shrink-0">
-                  <span className="font-mono text-xs text-muted mb-4 block">
-                    {exp.period}
-                  </span>
-                  <h3 className="font-display text-2xl md:text-3xl group-hover:translate-x-2 transition-transform duration-500 ease-out">
-                    {exp.role}
-                  </h3>
-                  <p className="text-muted mt-2 font-serif italic">{exp.company}</p>
-                </div>
-                <div className="md:w-2/3">
-                  <p className="text-muted leading-relaxed text-sm md:text-base">
-                    {exp.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+    <section id="experience" className="px-6 py-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <h2 className="text-2xl font-bold mb-8">Experience</h2>
+        
+        <div className="flex flex-col gap-8">
+          {experiences.map((exp) => (
+            <div key={exp.company} className="flex flex-col sm:flex-row gap-2 sm:gap-8">
+              <div className="sm:w-32 shrink-0 text-sm text-muted-foreground pt-1">
+                {exp.period}
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground">{exp.role}</h3>
+                <div className="text-sm text-muted-foreground mb-2">{exp.company}</div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {exp.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

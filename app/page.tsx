@@ -8,7 +8,7 @@ import Navbar from '@/components/Navbar';
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground selection:bg-foreground selection:text-background">
-      <div className="fixed inset-0 bg-noise pointer-events-none mix-blend-multiply" />
+      <div className="fixed inset-0 bg-dot-grid pointer-events-none" />
       
       <div className="relative z-10">
         <Navbar />
