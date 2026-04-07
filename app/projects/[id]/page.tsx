@@ -2,8 +2,9 @@ import { projects } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
-import Image from 'next/image';
 import * as motion from 'motion/react-client';
+import ProjectGallery from '@/components/ProjectGallery';
+import ArchitectureGrid from '@/components/ArchitectureGrid';
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -36,25 +37,11 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
       <article className="pt-40 px-6 md:px-12 max-w-5xl mx-auto relative z-10">
         {/* Header Section */}
         <header className="mb-24">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-4 mb-8"
-          >
-            <span className="font-mono text-xs text-muted border border-border px-4 py-1.5 rounded-full">
-              {project.year}
-            </span>
-            <span className="font-mono text-xs text-muted border border-border px-4 py-1.5 rounded-full">
-              {project.role}
-            </span>
-          </motion.div>
-          
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.1] tracking-tight mb-12 text-balance"
+            className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-8 text-balance"
           >
             {project.title}
           </motion.h1>
@@ -65,7 +52,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-wrap gap-3 mb-12"
           >
-            {project.tags.map(tag => (
+            {project.tech?.map(tag => (
               <span key={tag} className="text-xs font-mono text-foreground/80 bg-foreground/[0.03] border border-foreground/[0.05] px-3 py-1.5 rounded-md uppercase tracking-wider">
                 {tag}
               </span>
@@ -96,22 +83,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
           )}
         </header>
 
-        {/* Hero Image */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full aspect-[16/9] md:aspect-[21/9] mb-32 overflow-hidden rounded-xl bg-foreground/5 border border-border/50 shadow-sm"
-        >
-          <Image 
-            src={project.image} 
-            alt={project.title}
-            fill
-            className="object-cover"
-            priority
-            referrerPolicy="no-referrer"
-          />
-        </motion.div>
+        {/* Media Gallery */}
+        <ProjectGallery media={project.images || []} />
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
@@ -127,11 +100,11 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
               Overview
             </h2>
             <p className="text-lg md:text-xl leading-relaxed text-foreground/90 font-sans text-balance first-letter:text-5xl first-letter:font-display first-letter:mr-2 first-letter:float-left first-letter:leading-none">
-              {project.overview}
+              {project.description}
             </p>
           </motion.div>
 
-          {/* Right Column: Challenges & Solutions */}
+          {/* Right Column: Contributions */}
           <div className="lg:col-span-7 flex flex-col gap-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -140,32 +113,13 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted mb-8 border-b border-border pb-4">
-                Challenges
+                Key Contributions
               </h2>
               <ul className="flex flex-col gap-8">
-                {project.challenges.map((challenge, index) => (
+                {project.contributions?.map((contribution, index) => (
                   <li key={index} className="flex gap-6 items-start group">
                     <span className="font-mono text-xs text-muted/50 mt-1.5 group-hover:text-foreground transition-colors">0{index + 1}</span>
-                    <p className="text-base md:text-lg leading-relaxed text-foreground/80">{challenge}</p>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted mb-8 border-b border-border pb-4">
-                Solutions
-              </h2>
-              <ul className="flex flex-col gap-8">
-                {project.solutions.map((solution, index) => (
-                  <li key={index} className="flex gap-6 items-start group">
-                    <span className="font-mono text-xs text-muted/50 mt-1.5 group-hover:text-foreground transition-colors">0{index + 1}</span>
-                    <p className="text-base md:text-lg leading-relaxed text-foreground/80">{solution}</p>
+                    <p className="text-base md:text-lg leading-relaxed text-foreground/80">{contribution}</p>
                   </li>
                 ))}
               </ul>
@@ -173,29 +127,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
           </div>
         </div>
 
-        {/* Architecture Image */}
-        {'architectureImage' in project && project.architectureImage && (
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-32 lg:mt-40"
-          >
-            <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-muted mb-8 border-b border-border pb-4">
-              Architecture Design
-            </h2>
-            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden bg-foreground/5 border border-border/50 shadow-sm group">
-              <Image 
-                src={project.architectureImage} 
-                alt={`${project.title} Architecture`}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-[0.16,1,0.3,1]"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          </motion.div>
-        )}
+        {/* Architecture Grid */}
+        <ArchitectureGrid images={project.architectureImages || []} />
       </article>
     </main>
   );

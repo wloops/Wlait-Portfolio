@@ -1,66 +1,125 @@
 export const projects = [
   {
     id: '01',
-    title: 'AI 知识库问答平台',
-    description: '面向企业知识管理场景，搭建支持文档上传解析、文本清洗、切片、向量索引构建、语义检索、引用溯源的完整 RAG 链路。',
-    tags: ['FastAPI', 'Next.js', 'PostgreSQL', 'pgvector', 'RAG'],
-    role: '全栈架构与开发',
-    year: '2025',
-    overview: '该项目旨在解决企业内部海量非结构化文档的检索与问答难题。通过构建基于大语言模型（LLM）和检索增强生成（RAG）技术的知识库问答平台，员工可以通过自然语言提问，系统自动从企业知识库中检索相关片段，并生成带有引用溯源的准确回答。',
-    challenges: [
-      '复杂文档解析：PDF、Word 等格式中包含大量表格、图片和复杂排版，传统解析工具容易丢失上下文。',
-      '检索准确率：单纯的向量检索在特定专业术语和长尾问题上表现不佳。',
-      '流式响应体验：LLM 生成速度较慢，需要通过 SSE 实现打字机效果，同时保证引用溯源数据的同步返回。'
+    title: 'AI 知识库问答平台（RAG + Agent 工作台）',
+    description: '面向企业知识管理场景，搭建 AI 知识库问答平台，支持文档上传解析、文本清洗、切片、向量索引构建、语义检索、引用溯源、会话持久化与前后端一体化展示。',
+    contributions: [
+      '架构设计：基于 Python FastAPI + SQLAlchemy + PostgreSQL 设计核心模块，完成知识库与会话上下文绑定。',
+      'RAG 链路：实现文档上传 → 解析 → 清洗 → 切片 → Embedding → pgvector 检索 → LLM 回答的完整链路。',
+      '幻觉控制与溯源：设计 citations 返回结构附带摘要片段；引入 top1 相似度阈值兜底策略，检索不足时拒答。',
+      '全栈开发：基于 Next.js + TypeScript 设计产品级前端原型，覆盖工作台、知识库、文档管理与 Debug 面板。'
     ],
-    solutions: [
-      '采用基于视觉的文档解析方案（如 Unstructured / 结合多模态模型），提取结构化文本并保留层级关系。',
-      '引入混合检索（Hybrid Search）：结合 BM25 关键词检索与 pgvector 向量检索，并通过 Reranker 模型进行重排，大幅提升 Top-K 召回质量。',
-      '基于 FastAPI 实现全链路异步流式接口（SSE），前端使用 Vercel AI SDK 消费流数据，实现丝滑的对话体验。'
+    tech: ['LLM', 'RAG', 'Agent', 'AI 集成'],
+    images: [
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_00-46-58.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_01-02-13.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_01-02-51.png'
     ],
-    image: 'https://picsum.photos/seed/ai-rag/1920/1080?blur=4',
-    demoUrl: 'https://example.com/demo',
-    githubUrl: 'https://github.com/wlait/ai-rag-platform',
-    architectureImage: 'https://picsum.photos/seed/architecture/1920/1080?blur=2'
+    architectureImages: [
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-29_23-23-24.png',
+        title: '主链路架构图',
+        description: ''
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_00-40-14.png',
+        title: 'RAG 检索增强生成链路',
+        description: '详细描述了从文档解析、向量化存储到 LLM 问答的完整数据流。'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_00-54-11.png',
+        title: '共享状态 / 数据流图',
+        description: 'state 里放的是“会影响后续决策和可观测性”的信息，比如用户问题、改写问题、召回 chunk、相关度判断结果、最终答案、引用结构、会话 id'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_01-04-31.png',
+        title: '提示词设计',
+        description: ''
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_00-59-09.png',
+        title: 'AI 代码规范与验收闭环图',
+        description: ''
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_01-09-41.png',
+        title: '多 Agent 演进图',
+        description: ''
+      }
+    ],
+    githubUrl: 'https://github.com/wloops',
+    demoUrl: 'https://rag.restflux.online'
   },
   {
     id: '02',
-    title: 'HOBY 全流程供应链平台',
-    description: '面向政府及企业的大型 B2B 供应链服务平台。从 0 到 1 设计 React 配置端 + Vue 3 渲染端的双引擎低代码体系，大幅提升交付效率。',
-    tags: ['React', 'Vue3', 'Node.js BFF', 'Java', '低代码'],
-    role: '前端负责人 / 全栈开发',
-    year: '2024',
-    overview: 'HOBY 供应链平台是一个复杂的 B2B 业务系统，涉及采购、仓储、物流、结算等多个环节。由于不同客户的业务流程和表单字段差异巨大，传统的定制化开发模式难以为继。因此，我们决定引入低代码架构，以配置化驱动业务交付。',
-    challenges: [
-      '跨技术栈渲染：历史系统基于 Vue3，而新的配置端更适合用 React 生态（如 Formily）构建，如何实现跨端渲染？',
-      '复杂表单联动：供应链表单字段多达上百个，且存在复杂的联动校验逻辑。',
-      '微服务接口聚合：后端微服务拆分过细，前端直接调用会导致网络请求爆炸和逻辑碎片化。'
+    title: 'HOBY全流程供应链数据服务平台',
+    description: '面向政企的大型 B2B 供应链服务平台，涵盖多级仓储、BOM 管理、商品矩阵及全链路订单资金流转。',
+    contributions: [
+      '低代码双引擎：从 0 到 1 设计 React 配置端 + Vue 3 渲染端体系，标准 CRUD 页面交付周期从 2 天缩短至 0.5 天。',
+      '核心引擎开发：实现表单/表格/动作引擎，100% Schema 驱动，中后台硬编码量降低约 80%。',
+      'AI 能力集成：设计前端 Web Worker 预解析与 Node.js BFF 流式处理的大文件导入方案，结合 DeepSeek API 实现字段智能匹配与纠错。',
+      '全栈闭环：独立承担 Java 后端动态 Schema 组装接口开发，完成 Docker + Nginx 容器化线上部署。'
     ],
-    solutions: [
-      '设计了统一的 JSON Schema 协议，React 负责生成 Schema，Vue3 侧开发了一套基于 Schema 的动态渲染引擎，实现双端解耦。',
-      '引入 Node.js BFF（Backend for Frontend）层，使用 GraphQL/REST 聚合底层微服务接口，为前端提供裁剪后的聚合数据，大幅降低前端复杂度。',
-      '在低代码引擎中内置表达式沙箱，支持业务人员通过简单的 JavaScript 表达式配置表单联动逻辑。'
-    ],
-    image: 'https://picsum.photos/seed/supply-chain/1920/1080?blur=4',
-    architectureImage: 'https://picsum.photos/seed/arch2/1920/1080?blur=2'
+    tech: ['React', 'Vue 3', 'Node.js', 'DeepSeek API', 'JSON Schema'],
+    images: [],
+    architectureImages: [
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_00-09-43.png',
+        title: '低代码引擎架构设计',
+        description: '详细描述了低代码引擎的整体架构设计，包括前端配置端与渲染端的交互，以及核心引擎的实现。'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_00-10-44.png',
+        title: '低代码核心运行流程（简易）',
+        description: '展示了核心引擎的运行流程，从 JSON Schema 配置输入到最终页面渲染的过程。'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_00-12-28.png',
+        title: '动态禁用规则引擎解析流程图（难点之一）',
+        description: '针对复杂的动态禁用规则引擎，设计了基于树形结构的规则解析流程，支持多层嵌套与逻辑组合，确保在复杂业务场景下的正确性与性能。'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260330001439275.png',
+        title: '动态禁用规则引擎运行时递归评估流程图',
+        description: ''
+      }
+    ]
   },
   {
     id: '03',
-    title: '密码安全态势感知大屏',
-    description: '面向政企安全运营的监控中枢。设计拖拽编排 + JSON Schema 驱动的可视化页面配置引擎，并解决海量实时数据场景下的性能瓶颈。',
-    tags: ['Vue3', 'ECharts', 'WebSocket', '大屏优化'],
-    role: '前端架构师',
-    year: '2022',
-    overview: '态势感知大屏是网络安全产品的“门面”，需要在一个屏幕上实时展示海量的告警、流量、资产等安全数据。客户对大屏的视觉效果、实时性和定制化能力要求极高。',
-    challenges: [
-      '性能瓶颈：WebSocket 每秒推送上百条告警数据，ECharts 频繁重绘导致页面卡顿、内存泄漏。',
-      '定制化成本高：不同客户对大屏的布局、图表类型要求不同，每次交付都需要前端修改代码。',
-      '大屏适配：需要在各种奇葩分辨率的拼接屏上完美显示，不能出现拉伸或留白。'
+    title: '密码安全态势感知平台（数据可视化大屏）',
+    description: '面向政企安全运营的监控中枢，具备海量高频威胁数据实时展示等高可用要求，提升企业对密码安全的整体认知和防护能力。',
+    contributions: [
+      '低代码大屏引擎：设计拖拽编排 + JSON Schema 驱动的可视化配置引擎，单张大屏交付周期从 2 周缩短至 3 天。',
+      '性能与内存治理：基于 WebSocket 长连接与 ECharts 增量渲染，解决 DOM 节点膨胀与卡顿；首屏加载优化至 1.5s 内，交互延迟控制在 100ms 内。',
+      '自适应架构：引入动态缩放算法，代码零侵入实现 4K/8K 及异形拼接大屏的像素级精准还原。'
     ],
-    solutions: [
-      '性能优化：引入 RequestAnimationFrame 控制渲染帧率，使用 Web Worker 处理数据聚合逻辑，对 ECharts 实例进行池化管理，彻底解决内存泄漏。',
-      '可视化编排：开发了一套大屏可视化编辑器，支持组件拖拽、缩放、数据源绑定，最终导出 JSON 配置，实现大屏的“零代码”交付。',
-      '自适应方案：放弃传统的 rem/vw 方案，采用基于 Transform Scale 的等比例缩放方案，保证在任何分辨率下都能完美还原设计稿。'
+    tech: ['WebSocket', 'ECharts', 'JSON Schema', '性能调优'],
+    images: [
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/3cd3855875cf68262351dd4100b3da0a.jpg',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/24c7df905c15623b755458a934e5f0c8.jpg',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/3f22e1eb6876e1a4b81b09904a310b11.jpg',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/f61426fdfbdc099c2656785c6bb9d2e8.jpg'
     ],
-    image: 'https://picsum.photos/seed/cyber-security/1920/1080?blur=4'
+    architectureImages: [
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/0d30d8cd779b704101c263b96a1b25dd.jpg',
+        title: '平台监控数据总结',
+        description: ''
+      }
+    ]
+  },
+  {
+    id: '04',
+    title: '密码服务平台',
+    description: '面向行内业务系统提供统一密码能力与安全接入的核心系统。',
+    contributions: [
+      '架构演进：主导核心系统从 JSP / FreeMarker 向 Vue 2 / Vue 3 的平滑迁移，完成前端工程化体系建设与历史技术债治理。',
+      '全栈安全：参与全栈安全能力建设，落地国密算法（SM2/SM4）前端接入。',
+      '效能提升：基于 Python 开发自动化验证工具，大幅提升前后端联调效率。'
+    ],
+    tech: ['Vue 2', 'Webpack', '国密算法', 'GitLab CI/CD'],
+    images: [],
+    architectureImages: []
   }
 ];
