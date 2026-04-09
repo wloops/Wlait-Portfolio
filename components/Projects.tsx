@@ -40,17 +40,17 @@ export default function Projects() {
                 {/* Hover Background Reveal */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/[0.01] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
                 
-                <div className="flex items-start gap-8 md:gap-16 md:w-1/2 mb-6 md:mb-0 relative z-10">
-                  <span className="font-mono text-xs text-muted pt-2 group-hover:text-foreground transition-colors duration-300">{project.id}</span>
+                <div className="flex items-start gap-6 md:gap-12 lg:gap-16 md:w-5/12 lg:w-1/2 mb-6 md:mb-0 relative z-10">
+                  <span className="font-mono text-xs text-muted pt-1.5 group-hover:text-foreground transition-colors duration-300 shrink-0">{project.id}</span>
                   <div>
-                    <h3 className="font-display text-4xl md:text-5xl group-hover:translate-x-4 transition-transform duration-500 ease-[0.16,1,0.3,1]">
+                    <h3 className="font-display text-2xl md:text-3xl lg:text-4xl leading-snug group-hover:translate-x-4 transition-transform duration-500 ease-[0.16,1,0.3,1] text-balance">
                       {project.title}
                     </h3>
                   </div>
                 </div>
                 
-                <div className="md:w-1/2 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 relative z-10">
-                  <div className="max-w-sm">
+                <div className="md:w-7/12 lg:w-1/2 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 relative z-10">
+                  <div className="max-w-md">
                     <p className="text-muted text-sm leading-relaxed mb-4 group-hover:text-foreground/80 transition-colors duration-300">
                       {project.description}
                     </p>
