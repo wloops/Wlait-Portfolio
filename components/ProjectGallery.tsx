@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight, Maximize2, Play } from 'lucide-react';
 import Lightbox from "yet-another-react-lightbox";
 import Video from "yet-another-react-lightbox/plugins/video";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 
 const isVideo = (url: string) => /\.(mp4|webm|ogg)$/i.test(url);
@@ -104,8 +105,19 @@ export default function ProjectGallery({ media }: { media: string[] }) {
         close={() => setIsLightboxOpen(false)}
         index={currentIndex}
         slides={slides}
-        plugins={[Video]}
+        plugins={[Video, Zoom]}
         carousel={{ finite: media.length <= 1 }}
+        zoom={{
+          maxZoomPixelRatio: 3,
+          zoomInMultiplier: 2,
+          doubleTapDelay: 300,
+          doubleClickDelay: 300,
+          doubleClickMaxStops: 2,
+          keyboardMoveDistance: 50,
+          wheelZoomDistanceFactor: 100,
+          pinchZoomDistanceFactor: 100,
+          scrollToZoom: false,
+        }}
         render={{
           buttonPrev: media.length <= 1 ? () => null : undefined,
           buttonNext: media.length <= 1 ? () => null : undefined,

@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { Maximize2 } from 'lucide-react';
 import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
 
@@ -71,8 +72,19 @@ export default function ArchitectureGrid({ images }: { images: ArchImage[] }) {
         close={() => setSelectedIndex(-1)}
         index={selectedIndex >= 0 ? selectedIndex : 0}
         slides={slides}
-        plugins={[Captions]}
+        plugins={[Captions, Zoom]}
         carousel={{ finite: images.length <= 1 }}
+        zoom={{
+          maxZoomPixelRatio: 3,
+          zoomInMultiplier: 2,
+          doubleTapDelay: 300,
+          doubleClickDelay: 300,
+          doubleClickMaxStops: 2,
+          keyboardMoveDistance: 50,
+          wheelZoomDistanceFactor: 100,
+          pinchZoomDistanceFactor: 100,
+          scrollToZoom: false,
+        }}
         render={{
           buttonPrev: images.length <= 1 ? () => null : undefined,
           buttonNext: images.length <= 1 ? () => null : undefined,
