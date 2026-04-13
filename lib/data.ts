@@ -100,6 +100,11 @@ export const projects = [
         description: ''
       },
       {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-04-13_11-58-19.png',
+        title: '运行时控制体系（动作总线与动态规则引擎）',
+        description: '展示了由动作总线与动态规则引擎构成的核心运行时控制体系。低代码的真正难点在于复杂交互的稳定运转：页面行为由 Schema 和动作协议驱动，动作总线需统一分发受联动、校验、状态影响的多种执行路径（如弹窗、跳转、提交）；动态规则引擎则在运行时实时评估多条件规则以控制字段与按钮的可用性。通过将规则计算、动作分发与状态回写收敛至统一运行时，实现了“动作执行 → 状态回写 → 规则重算”的稳定闭环。'
+      },
+      {
         src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/PixPin_2026-03-30_00-10-44.png',
         title: '低代码核心运行流程（简易）',
         description: '展示了核心引擎的运行流程，从 JSON Schema 配置输入到最终页面渲染的过程。'
