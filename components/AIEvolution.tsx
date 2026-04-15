@@ -58,6 +58,7 @@ const workflowImages = [
 
 export default function AIEvolution() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   return (
     <section id="ai-workflow" className="py-32 px-6 md:px-12 relative border-t border-border bg-foreground/[0.01]">
@@ -135,7 +136,7 @@ export default function AIEvolution() {
                 这是我目前在实际开发中严格执行的 AI 驱动工作流。通过将需求拆解为明确的 Spec，结合 AI 进行代码生成、审查与一致性校验，形成从需求到代码的可靠闭环。这确保了 AI 产出的代码始终符合架构预期。
               </p>
               <button
-                onClick={() => setLightboxOpen(true)}
+                onClick={() => { setLightboxIndex(1); setLightboxOpen(true); }}
                 className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-foreground hover:text-foreground/70 transition-colors group"
               >
                 查看完整流程图 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -144,7 +145,7 @@ export default function AIEvolution() {
             
             <div 
               className="lg:w-2/3 relative w-full aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden bg-white/90 dark:bg-white/95 border border-border/50 group cursor-pointer shadow-sm" 
-              onClick={() => setLightboxOpen(true)}
+              onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
             >
               <Image
                 src={workflowImages[0].src}
@@ -166,6 +167,7 @@ export default function AIEvolution() {
       <Lightbox
         open={lightboxOpen}
         close={() => setLightboxOpen(false)}
+        index={lightboxIndex}
         slides={workflowImages}
         plugins={[Zoom, Captions]}
         zoom={{
