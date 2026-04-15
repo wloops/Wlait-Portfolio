@@ -1,7 +1,14 @@
 'use client';
 
+import { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'motion/react';
-import { Terminal, BrainCircuit, FileCode2 } from 'lucide-react';
+import { Terminal, BrainCircuit, FileCode2, Maximize2, ArrowRight } from 'lucide-react';
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/captions.css";
 
 const stages = [
   {
@@ -36,7 +43,22 @@ const stages = [
   }
 ];
 
+const workflowImages = [
+  { 
+    src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/mermaid-diagram%20(3).png', 
+    title: 'Spec-Driven Workflow (简版)',
+    description: '核心主干流程：根据改动规模决定是否需要编写 Spec，通过 AI 辅助执行后，进行严格的测试与一致性校验，最终归档为新的事实基线。'
+  },
+  { 
+    src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/mermaid-diagram%20(2).png', 
+    title: 'Spec-Driven Workflow (完整版)',
+    description: '完整执行链路：包含规格审阅的打回机制、执行计划的调整循环，以及 AI Code Review 发现问题后的修复闭环，确保每一步都符合预期。'
+  }
+];
+
 export default function AIEvolution() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   return (
     <section id="ai-workflow" className="py-32 px-6 md:px-12 relative border-t border-border bg-foreground/[0.01]">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -97,7 +119,67 @@ export default function AIEvolution() {
             );
           })}
         </div>
+
+        {/* Workflow Diagram Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-24 pt-16 border-t border-border/50"
+        >
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+            <div className="lg:w-1/3">
+              <h3 className="text-2xl md:text-3xl font-display mb-4">Spec-Driven Workflow</h3>
+              <p className="text-muted text-sm leading-relaxed mb-8">
+                这是我目前在实际开发中严格执行的 AI 驱动工作流。通过将需求拆解为明确的 Spec，结合 AI 进行代码生成、审查与一致性校验，形成从需求到代码的可靠闭环。这确保了 AI 产出的代码始终符合架构预期。
+              </p>
+              <button
+                onClick={() => setLightboxOpen(true)}
+                className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-foreground hover:text-foreground/70 transition-colors group"
+              >
+                查看完整流程图 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+            
+            <div 
+              className="lg:w-2/3 relative w-full aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden bg-white/90 dark:bg-white/95 border border-border/50 group cursor-pointer shadow-sm" 
+              onClick={() => setLightboxOpen(true)}
+            >
+              <Image
+                src={workflowImages[0].src}
+                alt="Workflow Simple"
+                fill
+                className="object-contain p-4 md:p-8 group-hover:scale-[1.02] transition-transform duration-700 ease-[0.16,1,0.3,1]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center">
+                <div className="opacity-0 group-hover:opacity-100 bg-background/90 backdrop-blur-sm text-foreground p-3 rounded-full transition-opacity duration-300 transform scale-90 group-hover:scale-100 shadow-lg">
+                  <Maximize2 className="w-5 h-5" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
+
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        slides={workflowImages}
+        plugins={[Zoom, Captions]}
+        zoom={{
+          maxZoomPixelRatio: 3,
+          zoomInMultiplier: 2,
+          doubleTapDelay: 300,
+          doubleClickDelay: 300,
+          doubleClickMaxStops: 2,
+          keyboardMoveDistance: 50,
+          wheelZoomDistanceFactor: 100,
+          pinchZoomDistanceFactor: 100,
+          scrollToZoom: false,
+        }}
+      />
     </section>
   );
 }
