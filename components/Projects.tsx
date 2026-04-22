@@ -43,6 +43,24 @@ export default function Projects() {
                 <div className="flex items-start gap-6 md:gap-12 lg:gap-16 md:w-5/12 lg:w-1/2 mb-6 md:mb-0 relative z-10">
                   <span className="font-mono text-xs text-muted pt-1.5 group-hover:text-foreground transition-colors duration-300 shrink-0">{project.id}</span>
                   <div>
+                    {((project as any).type || (project as any).status) && (
+                      <div className="mb-3 flex items-center gap-2 flex-wrap">
+                        {(project as any).type && (
+                          <span className={`px-2.5 py-1 text-[10px] font-mono tracking-wider rounded-md border ${
+                            (project as any).type === 'Personal Project' 
+                              ? 'bg-blue-500/10 text-blue-500 border-blue-500/20' 
+                              : 'bg-foreground/5 text-muted border-border/50'
+                          }`}>
+                            {(project as any).type}
+                          </span>
+                        )}
+                        {(project as any).status && (
+                          <span className="px-2.5 py-1 text-[10px] font-mono tracking-wider rounded-md border bg-amber-500/10 text-amber-500 border-amber-500/20">
+                            {(project as any).status}
+                          </span>
+                        )}
+                      </div>
+                    )}
                     <h3 className="font-display text-2xl md:text-3xl lg:text-4xl leading-snug group-hover:translate-x-4 transition-transform duration-500 ease-[0.16,1,0.3,1] text-balance">
                       {project.title}
                     </h3>

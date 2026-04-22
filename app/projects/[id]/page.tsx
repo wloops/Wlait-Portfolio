@@ -37,6 +37,29 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
       <article className="pt-40 px-6 md:px-12 max-w-5xl mx-auto relative z-10">
         {/* Header Section */}
         <header className="mb-24">
+          {((project as any).type || (project as any).status) && (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-8 flex items-center gap-3 flex-wrap"
+            >
+              {(project as any).type && (
+                <span className={`px-3 py-1.5 text-xs font-mono tracking-[0.1em] uppercase rounded-md border ${
+                  (project as any).type === 'Personal Project' 
+                    ? 'bg-blue-500/10 text-blue-500 border-blue-500/20' 
+                    : 'bg-foreground/5 text-muted border-border/50'
+                }`}>
+                  {(project as any).type}
+                </span>
+              )}
+              {(project as any).status && (
+                <span className="px-3 py-1.5 text-xs font-mono tracking-[0.1em] uppercase rounded-md border bg-amber-500/10 text-amber-500 border-amber-500/20">
+                  {(project as any).status}
+                </span>
+              )}
+            </motion.div>
+          )}
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

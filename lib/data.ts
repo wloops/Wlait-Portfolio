@@ -2,6 +2,7 @@ export const projects = [
   {
     id: '01',
     title: '企业级 AI 知识库问答平台（RAG）',
+    type: 'Enterprise Project',
     description: '面向企业知识管理场景，搭建基于 LangGraph 编排的 Hybrid / Workflow RAG 知识库平台，支持文档异步入库、多路检索、流式问答、引用溯源与调试分析。',
     contributions: [
       'RAG 工作流（Workflow RAG）：基于 LangGraph 重构问答链路，将问题改写、多路召回、重排、相关性判断、答案生成与引用构建拆分为独立节点，提升系统健壮性与可观测性。',
@@ -68,7 +69,53 @@ export const projects = [
   },
   {
     id: '02',
+    title: '文鉴 · AdmitKit',
+    type: 'Personal Project',
+    description: '一款面向 PhD 与 Research Master 申请者的 SOP (Statement of Purpose) AI 辅助写作工具。定位为写作辅助而非代写，提供“结构化梳理 → 大纲 → 草稿 → 优化 → 诊断 → 去 AI 味”的完整工作流。',
+    contributions: [
+      '核心智能工作流：基于服务端接口，实现从 6 步专业问卷到结构化大纲，再到带有智能占位符的草稿生成的完整写作辅助链路。',
+      '四维深度诊断与优化：实现逻辑、证据、完整性、人类化四维评分模型；支持“更学术”、“更具体”等指令微调，结合原始问卷数据补充量化细节。',
+      '防套路“去 AI 味”引擎：自研 AI 惯用词（如 delve, crucial）与死板句式检测机制，提供直观的实时高亮与一键批量替换功能，帮助用户恢复真实人设。',
+      '前后端分离架构：前端跨专业配置 5 类专业与 2 种学位模式，基于 React 18 + TS + Tailwind v4 构建交互式编辑器；后端基于 FastAPI 对接 DeepSeek API 实现复杂分析。'
+    ],
+    tech: ['React 18', 'TypeScript', 'FastAPI', 'DeepSeek API', 'Tailwind CSS v4', 'Vite', 'React Router'],
+    demoUrl: 'https://admitkit.restflux.cn',
+    images: [
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260421204834297.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260421205003028.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260421205038933.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260421212523240.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260421212619334.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260421212740099.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260421212924214.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260421213736578.png'
+    ],
+    architectureImages: []
+  },
+  {
+    id: '03',
+    title: 'Agora 虚拟会议 · 多 Agent 协作框架',
+    type: 'Personal Project',
+    status: '🚧 迭代中 (Phase 2)',
+    description: '一个支持动态拉人、角色可插拔、场景可配置的多Agent虚拟研讨系统。系统目前处在稳步迭代中（已跑通第二阶段核心碰撞流）。基于 LangGraph 编排，由 AI 主持人动态调度各领域专家 Agent 展开结构化讨论、辩论并输出最终方案。',
+    contributions: [
+      '动态调度与工作流编排 (已落地)：基于 LangGraph 搭建主工作流，实现 AI 主持人根据用户意图和场景判定，动态拉取不同领域专家 Agent 参会。',
+      '多阶段辩论与碰撞流 (Phase 2)：设计结构化分歧检测与迭代辩论流，支持多角色在特定观点上进行交叉辩论，并由主持人根据原则进行收束与最终仲裁。',
+      '场景与角色配置化 (待实现)：探索将角色定义抽离为独立的 Skill，提供结构化的场景模板与角色属性配置库，以满足向多业务场景复用的低门槛扩展。',
+      'MCP 工具链增强 (规划中)：筹备为 Agent 引入可扩展的 MCP 协议操作库，实现与业务数据库和私域文档的深入互操作。'
+    ],
+    tech: ['LangGraph', 'Multi-Agent', 'LLM', 'MCP', 'FastAPI', 'React', 'Vite'],
+    demoUrl: 'https://agora.wlait.com',
+    images: [
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260422175052243.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260422174933040.png'
+    ],
+    architectureImages: []
+  },
+  {
+    id: '04',
     title: 'HOBY全流程供应链数据服务平台',
+    type: 'Enterprise Project',
     description: '面向政府及企业客户的大型 B2B 供应链数据服务平台，覆盖买方采购、商品中心、卖方销售、仓储台账等核心业务场景。项目以 Vue3 低代码渲染引擎为核心，通过 JSON Schema 驱动表单、表格与动作逻辑，同时由 Java(Spring Boot) 提供动态 Schema 下发、复杂服务端校验与核心业务接口支撑，最终配合 Docker / Nginx 完成交付上线。',
     contributions: [
       'Vue3 低代码渲染引擎：从 0 到 1 搭建低代码渲染端，通过 JSON Schema 动态驱动表单与表格逻辑，将标准 CRUD 页面交付周期从 2 天缩减至 0.5 天。',
@@ -122,8 +169,9 @@ export const projects = [
     ]
   },
   {
-    id: '03',
+    id: '05',
     title: '密码安全态势感知平台（数据可视化大屏）',
+    type: 'Enterprise Project',
     description: '面向政企安全运营的监控中枢，旨在通过监测密码使用情况和密码安全事件，具备海量高频威胁数据实时展示等高可用要求，提升企业对密码安全的整体认知和防护能力。',
     contributions: [
       '可视化大屏引擎：设计拖拽编排 + JSON Schema 驱动的大屏配置引擎，单页交付周期从 2 周缩短至 3 天。',
@@ -146,8 +194,9 @@ export const projects = [
     ]
   },
   {
-    id: '04',
+    id: '06',
     title: '密码服务平台',
+    type: 'Enterprise Project',
     description: '面向行内业务系统提供统一密码能力与安全接入的核心系统。',
     contributions: [
       '架构演进：主导核心系统从 JSP / FreeMarker 向 Vue 2 / Vue 3 的平滑迁移，完成前端工程化体系建设与历史技术债治理。',
