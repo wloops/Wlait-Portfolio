@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
 import * as motion from 'motion/react-client';
 import ProjectGallery from '@/components/ProjectGallery';
 import ArchitectureGrid from '@/components/ArchitectureGrid';
+import DemoLink from '@/components/DemoLink';
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -91,10 +92,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
               className="flex flex-wrap gap-4 mb-12"
             >
               {'demoUrl' in project && project.demoUrl && (
-                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-xs font-mono uppercase tracking-widest border border-foreground bg-foreground text-background px-6 py-3 rounded-full hover:bg-transparent hover:text-foreground transition-all duration-300">
-                  <span>Live Demo</span>
-                  <ExternalLink className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
+                <DemoLink url={project.demoUrl as string} projectId={project.id} />
               )}
               {'githubUrl' in project && project.githubUrl && (
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-xs font-mono uppercase tracking-widest border border-border px-6 py-3 rounded-full hover:border-foreground transition-all duration-300">
