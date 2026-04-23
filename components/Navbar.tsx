@@ -5,8 +5,29 @@ import Link from 'next/link';
 import Logo from './Logo';
 import { Github, Mail } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string, targetPath: string) => {
+    if (pathname === '/' || pathname === '/projects' || pathname === '/experience') {
+      e.preventDefault();
+      const el = document.getElementById(targetId);
+      el?.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', targetPath);
+    }
+  };
+
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/' || pathname === '/projects' || pathname === '/experience') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', '/');
+    }
+  };
+
   return (
     <motion.nav 
       initial={{ y: -20, opacity: 0 }}
@@ -14,16 +35,24 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 bg-background/50 backdrop-blur-md text-foreground"
     >
-      <Link href="/" className="hover:opacity-60 transition-opacity" aria-label="Home">
+      <Link href="/" onClick={handleHomeClick} className="hover:opacity-60 transition-opacity" aria-label="Home">
         <Logo className="w-14 h-10 text-current" />
       </Link>
       
       <div className="flex items-center gap-6 md:gap-8 font-mono text-xs uppercase tracking-widest">
         <div className="hidden md:flex items-center gap-8 mr-4">
-          <Link href="/#projects" className="text-current hover:opacity-60 transition-opacity">
+          <Link 
+            href="/projects" 
+            onClick={(e) => handleNavClick(e, 'projects', '/projects')}
+            className="text-current hover:opacity-60 transition-opacity"
+          >
             Projects
           </Link>
-          <Link href="/#experience" className="text-current hover:opacity-60 transition-opacity">
+          <Link 
+            href="/experience" 
+            onClick={(e) => handleNavClick(e, 'experience', '/experience')}
+            className="text-current hover:opacity-60 transition-opacity"
+          >
             Experience
           </Link>
         </div>

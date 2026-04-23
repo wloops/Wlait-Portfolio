@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 
 const skills = [
-  { category: 'AI & Multi-Agent', items: ['LLM 模型接入', 'Agent 工作流编排', 'LangGraph', 'MCP 协议扩展', 'RAG / 混合检索', 'Prompt 工程'] },
+  { category: 'AI & Multi-Agent', items: ['LLM 模型接入', 'Agent 工作流编排', 'LangGraph', 'MCP 协议扩展', 'RAG / 混合检索', 'Agent Skills'] },
   { category: '前端生态与架构', items: ['React / Next.js', 'Vue 3', 'TypeScript', 'Tailwind CSS', '状态管理 (Zustand/Pinia)', '低代码渲染引擎'] },
   { category: '服务端与数据库', items: ['PostgreSQL & pgvector', 'Python (FastAPI)', 'Java (Spring Boot)', 'Redis', 'RESTful API设计', 'Celery'] },
   { category: '产品架构与体验', items: ['业务边界与需求拆解', '复杂交互工作流编排', 'B端/SaaS 产品设计', 'AI 创新场景落地', 'MVP 最小可行性验证'] },
@@ -53,9 +53,9 @@ export default function Skills() {
                   <h3 className="font-display text-3xl md:text-4xl md:w-1/3 group-hover:translate-x-2 transition-transform duration-500 ease-[0.16,1,0.3,1]">
                     {skillGroup.category}
                   </h3>
-                  <div className="md:w-2/3 flex flex-wrap gap-x-8 gap-y-4">
+                  <div className="md:w-2/3 grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
                     {skillGroup.items.map((item) => (
-                      <span key={item} className="text-background/80 font-sans text-lg relative overflow-hidden group/item">
+                      <span key={item} className="text-background/80 font-sans text-base md:text-lg relative overflow-hidden group/item">
                         <span className="relative z-10 group-hover/item:text-background transition-colors duration-300">{item}</span>
                         <span className="absolute bottom-0 left-0 w-full h-[1px] bg-background/30 origin-left scale-x-0 group-hover/item:scale-x-100 transition-transform duration-300 ease-out" />
                       </span>

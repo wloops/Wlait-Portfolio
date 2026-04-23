@@ -27,12 +27,15 @@ const nextConfig: NextConfig = {
   },
   output: 'standalone',
   transpilePackages: ['motion'],
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: '/projects',
-        destination: '/#projects',
-        permanent: false,
+        destination: '/',
+      },
+      {
+        source: '/experience',
+        destination: '/',
       },
     ];
   },
