@@ -96,19 +96,21 @@ export const projects = [
     id: '03',
     title: 'Agora 虚拟会议 · 多 Agent 协作框架',
     type: 'Personal Project',
-    status: '🚧 迭代中 (Phase 2)',
-    description: '一个支持动态拉人、角色可插拔、场景可配置的多Agent虚拟研讨系统。系统目前处在稳步迭代中（已跑通第二阶段核心碰撞流）。基于 LangGraph 编排，由 AI 主持人动态调度各领域专家 Agent 展开结构化讨论、辩论并输出最终方案。',
+    status: '🚀 V2.0 架构升级',
+    description: 'Agora AI 智能协同编排引擎：构建了一个支持动态插拔、多域专家协同的虚拟研讨平台。基于 LangGraph 状态机架构，系统能够自动将业务上下文（如：需求边界、风控要求）注入决策链路。由 AI 主持人动态调度多维度的数字专家（架构师、QA、产品等），在统一的业务共识下展开高质量的辩论推演，最终输出自带风控守护与可落地的结构化方案。告别人工会议的冗长低效。',
     contributions: [
-      '动态调度与工作流编排 (已落地)：基于 LangGraph 搭建主工作流，实现 AI 主持人根据用户意图和场景判定，动态拉取不同领域专家 Agent 参会。',
-      '多阶段辩论与碰撞流 (Phase 2)：设计结构化分歧检测与迭代辩论流，支持多角色在特定观点上进行交叉辩论，并由主持人根据原则进行收束与最终仲裁。',
-      '场景与角色配置化 (待实现)：探索将角色定义抽离为独立的 Skill，提供结构化的场景模板与角色属性配置库，以满足向多业务场景复用的低门槛扩展。',
-      'MCP 工具链增强 (规划中)：筹备为 Agent 引入可扩展的 MCP 协议操作库，实现与业务数据库和私域文档的深入互操作。'
+      '智能状态机与动态调度编排：基于 LangGraph 打造高可用核心工作流。AI 主持人具备强大的意图识别与会控能力，可根据不同业务议题，毫秒级动态拉起对应的领域专家 Agent，实现复杂任务场景下的精确资源调度。',
+      '多阶段对抗性推演机制 (Debate Flow)：首创“评审型四步流”机制（独立评审 -> 冲突归并 -> 主持裁决 -> 结论先导）。突破传统大模型的复读机困境，支持多角色在核心风控与体验边界上展开深度交叉辩论，真实还原企业级高质量决策过程。',
+      '领域知识注入与角色热插拔 (Skill Config)：采用高度解耦的架构设计，将专家人设、推理模型与评价标准抽象为独立的 Skill 资产。业务方无需修改底层代码，即可低代码扩充新的虚拟专家（如法务、财务总监），满足跨域业务的复用需求。',
+      '真实业务世界的连接器 (MCP 扩展引擎)：架构底层无缝兼容 MCP（Model Context Protocol）协议标准。赋予虚拟研讨会深度交互能力，支持 Agent 在辩论过程中动态挂载外部数据库检索、私域文档解析及第三方 API，让决策推演建立在真实数据之上。'
     ],
     tech: ['LangGraph', 'Multi-Agent', 'LLM', 'MCP', 'FastAPI', 'React', 'Vite'],
     demoUrl: 'https://agora.wlait.com',
     images: [
       'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260422175052243.png',
-      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260422174933040.png'
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423111247891.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423111322629.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423111354654.png'
     ],
     architectureImages: []
   },

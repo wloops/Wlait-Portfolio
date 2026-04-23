@@ -142,7 +142,16 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
                 {project.contributions?.map((contribution, index) => (
                   <li key={index} className="flex gap-6 items-start group">
                     <span className="font-mono text-xs text-muted/50 mt-1.5 group-hover:text-foreground transition-colors">0{index + 1}</span>
-                    <p className="text-base md:text-lg leading-relaxed text-foreground/80">{contribution}</p>
+                    <p className="text-base md:text-lg leading-relaxed text-foreground/80">
+                      {contribution.includes('：') ? (
+                        <>
+                          <strong className="font-medium text-foreground">{contribution.split('：')[0]}：</strong>
+                          {contribution.substring(contribution.indexOf('：') + 1)}
+                        </>
+                      ) : (
+                        contribution
+                      )}
+                    </p>
                   </li>
                 ))}
               </ul>
