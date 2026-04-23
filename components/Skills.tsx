@@ -4,11 +4,12 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 
 const skills = [
-  { category: '前端开发', items: ['Vue3', 'React', 'TypeScript', 'Next.js', 'uni-app', 'Pinia/Vuex/Zustand', '前端工程化'] },
-  { category: '后端架构', items: ['Python (FastAPI)', 'Node.js (Express/BFF)', 'Java (Spring Boot)', 'RESTful API', 'JWT'] },
-  { category: 'AI / RAG', items: ['LLM 接入', 'Prompt 工程', 'OCR 结构化提取', 'Embedding', '向量检索', 'LangChain/LangGraph'] },
-  { category: '数据与基础设施', items: ['MySQL', 'PostgreSQL', 'pgvector', 'Docker', 'Nginx', 'Redis', 'GitLab CI/CD'] },
-  { category: '工程与性能', items: ['Monorepo (pnpm+Turborepo)', '低代码引擎', 'ECharts', '大屏性能优化', '长列表/内存治理'] },
+  { category: 'AI & Multi-Agent', items: ['LLM 模型接入', 'Agent 工作流编排', 'LangGraph', 'MCP 协议扩展', 'RAG / 混合检索', 'Prompt 工程'] },
+  { category: '前端生态与架构', items: ['React / Next.js', 'Vue 3', 'TypeScript', 'Tailwind CSS', '状态管理 (Zustand/Pinia)', '低代码渲染引擎'] },
+  { category: '服务端与数据库', items: ['PostgreSQL & pgvector', 'Python (FastAPI)', 'Java (Spring Boot)', 'Redis', 'RESTful API设计', 'Celery'] },
+  { category: '产品架构与体验', items: ['业务边界与需求拆解', '复杂交互工作流编排', 'B端/SaaS 产品设计', 'AI 创新场景落地', 'MVP 最小可行性验证'] },
+  { category: '工程与基础设施', items: ['Docker', 'Nginx', 'Vite / Webpack', 'GitLab CI/CD', 'Monorepo (Turborepo)'] },
+  { category: '数据与大屏性能', items: ['ECharts', 'WebSocket', '长列表/DOM 内存治理', '增量渲染调优', '超大屏精确适配'] },
 ];
 
 export default function Skills() {
