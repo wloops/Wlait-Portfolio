@@ -27,7 +27,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
       
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 flex items-center px-6 py-6 md:px-12 bg-background/80 backdrop-blur-md border-b border-border/50 text-foreground">
-        <Link href="/#projects" className="group flex items-center gap-3 font-mono text-xs uppercase tracking-widest hover:opacity-60 transition-opacity">
+        <Link href="/projects" className="group flex items-center gap-3 font-mono text-xs uppercase tracking-widest hover:opacity-60 transition-opacity">
           <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover:border-foreground transition-colors">
             <ArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
           </div>

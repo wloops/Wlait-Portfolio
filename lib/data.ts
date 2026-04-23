@@ -71,6 +71,7 @@ export const projects = [
     id: '02',
     title: '文鉴 · AdmitKit',
     type: 'Personal Project',
+    status: '🎓 留学文书 AI 辅写',
     description: '一款面向 PhD 与 Research Master 申请者的 SOP (Statement of Purpose) AI 辅助写作工具。定位为写作辅助而非代写，提供“结构化梳理 → 大纲 → 草稿 → 优化 → 诊断 → 去 AI 味”的完整工作流。',
     contributions: [
       '核心智能工作流：基于服务端接口，实现从 6 步专业问卷到结构化大纲，再到带有智能占位符的草稿生成的完整写作辅助链路。',
@@ -90,7 +91,23 @@ export const projects = [
       'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260421212924214.png',
       'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260421213736578.png'
     ],
-    architectureImages: []
+    architectureImages: [
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423152308475.png',
+        title: '系统架构图',
+        description: '这张图用于说明 AdmitKit 的整体系统边界和关键依赖关系。前端基于 React + Vite 构建，负责承载登录、文书创建、结果编辑与历史管理；后端使用 FastAPI 统一处理认证校验、文书生成、积分计费、支付联动和导出请求；底层通过 Supabase 管理用户、文书、版本、订单与积分数据，并接入 DeepSeek 提供生成、诊断与翻译能力。'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423152528310.png',
+        title: '核心流程图',
+        description: '这张图展示的是用户从注册登录到最终导出文书的主工作流。用户先在控制台进入 SOP 或 PS 创建流程，填写结构化问卷并生成大纲，在确认大纲后生成草稿，再进入诊断、优化、翻译和导出阶段，最后回到文书管理页持续迭代。'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423152623150.png',
+        title: '支付流程',
+        description: '这张附图用于补充展示 AdmitKit 的积分购买链路。用户从定价页或购买弹窗发起订单，请求在后端创建后会进入微信支付或支付宝网关；支付完成后，一方面前端可以轮询订单状态，另一方面支付平台也会通过异步回调通知后端，最终由系统完成积分发放并刷新控制台余额。'
+      }
+    ]
   },
   {
     id: '03',
@@ -112,7 +129,18 @@ export const projects = [
       'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423111322629.png',
       'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423111354654.png'
     ],
-    architectureImages: []
+    architectureImages: [
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423151416623.png',
+        title: '当前实现架构图',
+        description: '当前实现架构图用于说明 Agora AI 已经落地的正式运行主线。它聚焦展示用户如何从前端发起会议、后端如何基于 FastAPI + MeetingService + LangGraph 完成场景装配与多角色编排，以及系统最终如何通过事件流将结果沉淀为前端可导出的会议纪要。该图强调的是“当前真实可运行的系统边界”，用于建立技术可信度。'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423151637317.png',
+        title: '目标演进架构图',
+        description: '目标演进架构图用于说明 Agora AI 后续的产品化扩展方向。它展示了系统如何从当前的单场景、单模型评审主线，逐步演进到以 AI 主持人为中枢，联动可扩展角色技能库、模型编排层和外部工具接口的协作架构。该图强调的是“未来演进路径”，用于说明设计前瞻性与可扩展性，同时与当前实现保持清晰边界。'
+      }
+    ]
   },
   {
     id: '04',
