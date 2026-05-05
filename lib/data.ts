@@ -123,23 +123,29 @@ export const projects = [
       '结构化交付物生成：系统不仅输出对话过程，还会根据场景生成结构化结果。在智能研讨场景中输出会议纪要、关键争议、最终结论和行动项；在市场调研场景中可输出调研报告、竞品矩阵、机会洞察和执行建议。'
     ],
     tech: ['LANGGRAPH', 'MULTI-AGENT', 'ORCHESTRATION', 'MCP', 'FASTAPI', 'REACT', 'LLM GATEWAY'],
-    demoUrl: 'https://agora.wlait.com',
+    demoUrl: 'https://astra.wlait.com',
     images: [
-      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260422175052243.png',
-      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423111247891.png',
-      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423111322629.png',
-      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423111354654.png'
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506001955296.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002051702.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002143359.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002210696.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002259249.png'
     ],
     architectureImages: [
       {
-        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423151416623.png',
-        title: '当前实现架构图',
-        description: '当前实现架构图用于说明 Agora AI 已经落地的正式运行主线。它聚焦展示用户如何从前端发起会议、后端如何基于 FastAPI + MeetingService + LangGraph 完成场景装配与多角色编排，以及系统最终如何通过事件流将结果沉淀为前端可导出的会议纪要。该图强调的是“当前真实可运行的系统边界”，用于建立技术可信度。'
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506003913601.png',
+        title: 'Astra AI 整体系统架构',
+        description: '展示 Astra AI 从业务入口、主控 Agent 编排、执行模式、角色 Skill、模型与工具接入，到结构化交付物沉淀的整体架构。该架构以主控 Agent / Orchestrator 为核心，通过场景入口与配置中心加载任务上下文，并基于 LangGraph 驱动不同类型的多 Agent 协作流程。'
       },
       {
-        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423151637317.png',
-        title: '目标演进架构图',
-        description: '目标演进架构图用于说明 Agora AI 后续的产品化扩展方向。它展示了系统如何从当前的单场景、单模型评审主线，逐步演进到以 AI 主持人为中枢，联动可扩展角色技能库、模型编排层和外部工具接口的协作架构。该图强调的是“未来演进路径”，用于说明设计前瞻性与可扩展性，同时与当前实现保持清晰边界。'
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506003938066.png',
+        title: '智能研讨场景核心流程',
+        description: '展示当前 MVP 中“智能研讨”场景的阶段化执行过程：用户选择项目与场景，输入议题与约束后，主控 Agent 规划研讨流程，并调度多角色专家独立评审、识别争议、展开交叉辩论，最终收敛结论并生成结构化交付物。'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506004004088.png',
+        title: '多 Agent 并行任务执行扩展流程',
+        description: '展示 Astra AI 如何从“智能研讨”扩展到市场调研等复杂任务场景。主控 Agent 会先拆解任务目标，再分配给市场分析师、竞品研究员、用户洞察 Agent、资料整合 Agent 等角色并行执行，随后进行结果汇总、交叉校验、洞察生成与结构化报告输出。'
       }
     ]
   },
