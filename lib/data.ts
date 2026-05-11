@@ -69,6 +69,46 @@ export const projects = [
   },
   {
     id: '02',
+    title: 'Astra AI · 多 Agent 协同编排与任务执行平台',
+    type: 'Personal Project',
+    status: '🚀 V2.0 架构升级',
+    description: 'Astra AI 是一个基于主控 Agent 的多 Agent 协同编排平台。系统通过场景模板、阶段流程、角色技能库与外部工具接入，将复杂任务拆解为可调度、可追踪、可扩展的多 Agent 工作流。当前版本以“智能研讨”作为首个落地场景：由 AI 主持人读取项目上下文，动态调度产品、架构、测试等专家角色，完成议题澄清、独立评审、争议识别、结论收敛与结构化交付。后续同一套编排框架可扩展到市场调研、竞品分析、方案生成、代码审查、项目复盘等复杂任务执行场景。',
+    contributions: [
+      '主控 Agent 与场景化调度：设计主控 Agent 作为任务入口与流程调度核心，负责理解用户目标、识别场景、加载配置，并根据不同任务类型动态组织多 Agent 协作流程。当前已落地智能研讨场景，后续可扩展为市场调研、竞品分析、报告生成等任务流。',
+      '分阶段工作流编排：基于 LangGraph 构建阶段化执行流程，将复杂任务拆分为多个可追踪节点。在智能研讨场景中，流程包括议题澄清、独立评审、争议识别、交叉辩论、结论确认与交付物生成；在其他场景中，也可以替换为并行调研、资料汇总、结果校验等流程。',
+      '可插拔角色与 Skill 配置：将专家角色、职责边界、提示词、评价标准和可调用工具抽象为独立 Skill 配置。系统可以按场景动态拉起不同角色，例如产品经理、架构师、测试工程师，也可以扩展为市场分析师、竞品研究员、法务、财务等领域 Agent。',
+      '工具与知识接入能力：支持接入外部工具与知识库（如通过 MCP 协议），允许 Agent 动态调用 API、读取私域文档或检索企业数据库，打破模型的信息孤岛，让工作流基于真实有效的业务数据执行。',
+      '结构化交付物生成：系统不仅输出对话过程，还会根据场景生成结构化结果。在智能研讨场景中输出会议纪要、关键争议、最终结论和行动项；在市场调研场景中可输出调研报告、竞品矩阵、机会洞察和执行建议。'
+    ],
+    tech: ['LANGGRAPH', 'MULTI-AGENT', 'ORCHESTRATION', 'MCP', 'FASTAPI', 'REACT', 'LLM GATEWAY'],
+    demoUrl: 'https://astra.wlait.com',
+    images: [
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506001955296.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002051702.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002143359.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002210696.png',
+      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002259249.png'
+    ],
+    architectureImages: [
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506003913601.png',
+        title: 'Astra AI 整体系统架构',
+        description: '展示 Astra AI 从业务入口、主控 Agent 编排、执行模式、角色 Skill、模型与工具接入，到结构化交付物沉淀的整体架构。该架构以主控 Agent / Orchestrator 为核心，通过场景入口与配置中心加载任务上下文，并基于 LangGraph 驱动不同类型的多 Agent 协作流程。'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506003938066.png',
+        title: '智能研讨场景核心流程',
+        description: '展示当前 MVP 中“智能研讨”场景的阶段化执行过程：用户选择项目与场景，输入议题与约束后，主控 Agent 规划研讨流程，并调度多角色专家独立评审、识别争议、展开交叉辩论，最终收敛结论并生成结构化交付物。'
+      },
+      {
+        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506004004088.png',
+        title: '多 Agent 并行任务执行扩展流程',
+        description: '展示 Astra AI 如何从“智能研讨”扩展到市场调研等复杂任务场景。主控 Agent 会先拆解任务目标，再分配给市场分析师、竞品研究员、用户洞察 Agent、资料整合 Agent 等角色并行执行，随后进行结果汇总、交叉校验、洞察生成与结构化报告输出。'
+      }
+    ]
+  },
+  {
+    id: '03',
     title: '文鉴 · AdmitKit',
     type: 'Personal Project',
     status: '🎓 留学文书 AI 辅写',
@@ -106,46 +146,6 @@ export const projects = [
         src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260423152623150.png',
         title: '支付流程',
         description: '这张附图用于补充展示 AdmitKit 的积分购买链路。用户从定价页或购买弹窗发起订单，请求在后端创建后会进入微信支付或支付宝网关；支付完成后，一方面前端可以轮询订单状态，另一方面支付平台也会通过异步回调通知后端，最终由系统完成积分发放并刷新控制台余额。'
-      }
-    ]
-  },
-  {
-    id: '03',
-    title: 'Astra AI · 多 Agent 协同编排与任务执行平台',
-    type: 'Personal Project',
-    status: '🚀 V2.0 架构升级',
-    description: 'Astra AI 是一个基于主控 Agent 的多 Agent 协同编排平台。系统通过场景模板、阶段流程、角色技能库与外部工具接入，将复杂任务拆解为可调度、可追踪、可扩展的多 Agent 工作流。当前版本以“智能研讨”作为首个落地场景：由 AI 主持人读取项目上下文，动态调度产品、架构、测试等专家角色，完成议题澄清、独立评审、争议识别、结论收敛与结构化交付。后续同一套编排框架可扩展到市场调研、竞品分析、方案生成、代码审查、项目复盘等复杂任务执行场景。',
-    contributions: [
-      '主控 Agent 与场景化调度：设计主控 Agent 作为任务入口与流程调度核心，负责理解用户目标、识别场景、加载配置，并根据不同任务类型动态组织多 Agent 协作流程。当前已落地智能研讨场景，后续可扩展为市场调研、竞品分析、报告生成等任务流。',
-      '分阶段工作流编排：基于 LangGraph 构建阶段化执行流程，将复杂任务拆分为多个可追踪节点。在智能研讨场景中，流程包括议题澄清、独立评审、争议识别、交叉辩论、结论确认与交付物生成；在其他场景中，也可以替换为并行调研、资料汇总、结果校验等流程。',
-      '可插拔角色与 Skill 配置：将专家角色、职责边界、提示词、评价标准和可调用工具抽象为独立 Skill 配置。系统可以按场景动态拉起不同角色，例如产品经理、架构师、测试工程师，也可以扩展为市场分析师、竞品研究员、法务、财务等领域 Agent。',
-      '工具与知识接入能力：支持接入外部工具与知识库（如通过 MCP 协议），允许 Agent 动态调用 API、读取私域文档或检索企业数据库，打破模型的信息孤岛，让工作流基于真实有效的业务数据执行。',
-      '结构化交付物生成：系统不仅输出对话过程，还会根据场景生成结构化结果。在智能研讨场景中输出会议纪要、关键争议、最终结论和行动项；在市场调研场景中可输出调研报告、竞品矩阵、机会洞察和执行建议。'
-    ],
-    tech: ['LANGGRAPH', 'MULTI-AGENT', 'ORCHESTRATION', 'MCP', 'FASTAPI', 'REACT', 'LLM GATEWAY'],
-    demoUrl: 'https://astra.wlait.com',
-    images: [
-      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506001955296.png',
-      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002051702.png',
-      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002143359.png',
-      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002210696.png',
-      'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506002259249.png'
-    ],
-    architectureImages: [
-      {
-        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506003913601.png',
-        title: 'Astra AI 整体系统架构',
-        description: '展示 Astra AI 从业务入口、主控 Agent 编排、执行模式、角色 Skill、模型与工具接入，到结构化交付物沉淀的整体架构。该架构以主控 Agent / Orchestrator 为核心，通过场景入口与配置中心加载任务上下文，并基于 LangGraph 驱动不同类型的多 Agent 协作流程。'
-      },
-      {
-        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506003938066.png',
-        title: '智能研讨场景核心流程',
-        description: '展示当前 MVP 中“智能研讨”场景的阶段化执行过程：用户选择项目与场景，输入议题与约束后，主控 Agent 规划研讨流程，并调度多角色专家独立评审、识别争议、展开交叉辩论，最终收敛结论并生成结构化交付物。'
-      },
-      {
-        src: 'https://picgo-long.oss-cn-guangzhou.aliyuncs.com/imgs/20260506004004088.png',
-        title: '多 Agent 并行任务执行扩展流程',
-        description: '展示 Astra AI 如何从“智能研讨”扩展到市场调研等复杂任务场景。主控 Agent 会先拆解任务目标，再分配给市场分析师、竞品研究员、用户洞察 Agent、资料整合 Agent 等角色并行执行，随后进行结果汇总、交叉校验、洞察生成与结构化报告输出。'
       }
     ]
   },
